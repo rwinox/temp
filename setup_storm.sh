@@ -3,8 +3,8 @@
 set -e
 
 STORM_FILE="Storm"
-RESOLVERS_FILE="Client_resolvers.txt"
-CONFIG_FILE="Client_config.toml"
+RESOLVERS_FILE="client_resolvers.txt"
+CONFIG_FILE="client_config.toml"
 DOWNLOAD_URL="https://erfanzadeh.ir/files/Storm"
 AUTH_USER="admin"
 AUTH_PASS="admin"
@@ -14,7 +14,7 @@ echo "[*] Checking required files..."
 if [ -f "$STORM_FILE" ] && [ -f "$RESOLVERS_FILE" ] && [ -f "$CONFIG_FILE" ]; then
     echo "[+] All files exist. Running ./Storm ..."
     chmod +x "$STORM_FILE"
-    ./"$STORM_FILE" --config Client_config.toml --resolvers Client_resolvers.txt
+    ./"$STORM_FILE"
     exit 0
 fi
 
@@ -3886,4 +3886,4 @@ echo "[*] Setting execute permission on Storm..."
 chmod +x "$STORM_FILE"
 
 echo "[*] Running ./Storm ..."
-./"$STORM_FILE" --config Client_config.toml --resolvers Client_resolvers.txt
+./"$STORM_FILE"

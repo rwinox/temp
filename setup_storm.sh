@@ -1,26 +1,35 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
-# check required files
-if [[ -f "storm" && -f "client_resolvers.txt" && -f "client_config.toml" ]]; then
-    echo "[✔] All files exist. Running ./storm ..."
-    chmod +x storm
-    ./storm
+set -e
+
+STORM_FILE="Storm"
+RESOLVERS_FILE="Client_resolvers.txt"
+CONFIG_FILE="Client_config.toml"
+DOWNLOAD_URL="https://erfanzadeh.ir/files/Storm"
+AUTH_USER="admin"
+AUTH_PASS="admin"
+
+echo "[*] Checking required files..."
+
+if [ -f "$STORM_FILE" ] && [ -f "$RESOLVERS_FILE" ] && [ -f "$CONFIG_FILE" ]; then
+    echo "[+] All files exist. Running ./Storm ..."
+    chmod +x "$STORM_FILE"
+    ./"$STORM_FILE" --config Client_config.toml --resolvers Client_resolvers.txt
     exit 0
 fi
 
-echo "[!] Required files not found. Starting installation..."
+echo "[*] Missing required files. Rebuilding everything..."
 
-# Step 1: download storm binary with basic auth
-echo "[*] Downloading storm ..."
-curl -u admin:admin -o storm "https://erfanzadeh.ir/files/storm"
-if [[ $? -ne 0 ]]; then
-    echo "[✘] Download failed."
-    exit 1
-fi
+# Remove old files if they exist
+[ -f "storm" ] && rm -f "storm"
+[ -f "client_resolvers.txt" ] && rm -f "client_resolvers.txt"
+[ -f "client_config.toml" ] && rm -f "client_config.toml"
 
-# Step 2: create client_resolvers.txt
-echo "[*] Creating client_resolvers.txt ..."
-cat > client_resolvers.txt << EOF
+echo "[*] Downloading Storm..."
+curl -fL -u "$AUTH_USER:$AUTH_PASS" -o "$STORM_FILE" "$DOWNLOAD_URL"
+
+echo "[*] Creating $RESOLVERS_FILE ..."
+cat > "$RESOLVERS_FILE" << 'EOF'
 2.144.2.72:53
 2.144.2.154:53
 2.144.6.75:53
@@ -3435,9 +3444,8 @@ cat > client_resolvers.txt << EOF
 217.219.245.106:53
 EOF
 
-# Step 3: create client_config.toml
-echo "[*] Creating client_config.toml ..."
-cat > client_config.toml << EOF
+echo "[*] Creating $CONFIG_FILE ..."
+cat > "$CONFIG_FILE" << 'EOF'
 # ==============================================================================
 # StormDNS Go Client Configuration (Sample)
 # This sample is written for the current Go client implementation.
@@ -3456,7 +3464,7 @@ cat > client_config.toml << EOF
 # Must match server DOMAIN values exactly.
 # At least one domain is required.
 # All domains must be handled by the same server. Do not use different domains across multiple servers.
-DOMAINS = ["j.lrr.lol"]
+DOMAINS = ["h.lrr.lol"]
 
 # Encryption method for tunnel payloads.
 # Allowed values:
@@ -3472,7 +3480,7 @@ DATA_ENCRYPTION_METHOD = 1
 # Shared encryption key.
 # Required on the client.
 # Must match the server-side key file contents.
-ENCRYPTION_KEY = "3daba91415d337606a91e289ca61d6d6"
+ENCRYPTION_KEY = "74da7bcd0390d21fc6c9beb562e979cd"
 
 # ------------------------------------------------------------------------------
 # 2) Local Proxy Listener
@@ -3874,9 +3882,8 @@ CONFIG_VERSION = "1"
 
 EOF
 
-# Step 4: make storm executable
-chmod +x storm
+echo "[*] Setting execute permission on Storm..."
+chmod +x "$STORM_FILE"
 
-# Step 5: run storm
-echo "[*] Running ./storm ..."
-./storm
+echo "[*] Running ./Storm ..."
+./"$STORM_FILE" --config Client_config.toml --resolvers Client_resolvers.txt

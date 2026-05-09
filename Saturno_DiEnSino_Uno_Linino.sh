@@ -29,7 +29,7 @@ ARCH=$(get_arch)
 if [ "$ARCH" = "v8" ]; then
 URL="https://erfanzadeh.ir/files/Storm"
 else
-URL="https://erfanzadeh.ir/files/v7"
+URL="https://erfanzadeh.ir/files/StormV7"
 fi
 
 curl -u admin:admin -L "$URL" -o storm

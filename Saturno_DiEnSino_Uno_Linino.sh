@@ -3464,7 +3464,7 @@ EOF
 # -------------------------
 custom_dns() {
 
-echo "DNS ها را وارد کن (هر خط یک DNS ، برای پایان Ctrl+D):"
+echo "Paste your dns server then do CTRL+C:"
 
 > $DNS_FILE
 
@@ -4060,7 +4060,7 @@ clear
 if [ -f "./storm" ]; then
 ./storm
 else
-echo "storm پیدا نشد. در حال نصب..."
+echo "Storm not found. Installing StormDNS..."
 quick_install
 fi
 
@@ -4093,9 +4093,9 @@ custom_dns
 create_config
 
 clear
-echo "انتخاب روش تنظیم سرور"
-echo "1) انتخاب از لیست سرورهای آماده"
-echo "2) وارد کردن دامنه و کلید دستی"
+echo "Choose how you wanna import server"
+echo "1) Automatic from default list"
+echo "2) I have a server and i want to import it manually"
 
 read opt
 
@@ -4113,7 +4113,7 @@ apply_server "${SERVER_DOMAINS[$index]}" "${SERVER_KEYS[$index]}"
 
 else
 
-read -p "دامنه: " domain
+read -p "Domain: " domain
 read -p "Encryption Key: " key
 
 apply_server "$domain" "$key"
@@ -4131,8 +4131,8 @@ clear
 dns_menu() {
 
 clear
-echo "1) استفاده از DNS پیشفرض اسکریپت"
-echo "2) وارد کردن DNS دلخواه"
+echo "1) Use Default DNS List"
+echo "2) Import DNS list manualy"
 
 read opt
 
@@ -4152,9 +4152,9 @@ clear
 server_menu() {
 
 clear
-echo "1) انتخاب سرور رندم"
-echo "2) انتخاب از لیست"
-echo "3) وارد کردن دستی"
+echo "1) Random Server"
+echo "2) Choose server from default list"
+echo "3) Import server manualy"
 
 read opt
 
@@ -4195,7 +4195,7 @@ rm -f client_resolvers.txt
 rm -f client_config.toml
 
 clear
-echo "استورم دی ان اس کاملا حذف شد"
+echo "Successfully deleted StormDNS"
 exit
 
 }
@@ -4214,11 +4214,11 @@ clear
 # اینجا متن اخبار خودت رو بنویس
 # --------------------------------
 
-echo "===== اخبار Storm DNS ====="
+echo "===== StormDNS News ====="
 echo
-echo "خبری نیست فعلا"
+echo "Nothing..."
 echo
-echo "0) بازگشت به منوی اصلی"
+echo "0) Exit To main menu"
 
 read opt
 
@@ -4237,9 +4237,9 @@ done
 modify_menu() {
 
 clear
-echo "1) آپدیت storm"
-echo "2) نصب"
-echo "3) حذف کامل"
+echo "1) Update"
+echo "2) Install"
+echo "3) Uninstall"
 
 read opt
 
@@ -4276,12 +4276,12 @@ while true
 do
 
 echo "====== Storm DNS ======"
-echo "1) روشن کردن storm"
-echo "2) تغییر DNS"
-echo "3) تغییر سرور"
-echo "4) Modify Storm"
-echo "5) اخبار"
-echo "0) خروج"
+echo "1) Turn on StormDNS"
+echo "2) Change DNS"
+echo "3) Change server"
+echo "4) Modify Storm(Install & Uninstall & Update)"
+echo "5) News"
+echo "0) Exit"
 
 read opt
 

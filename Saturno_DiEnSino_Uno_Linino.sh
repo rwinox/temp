@@ -3971,6 +3971,21 @@ SERVER_DOMAINS=(
 "j.lrr.lol"
 "eu.link-dakheli-app.shop"
 "sr.link-dakheli-app.shop"
+"v1.abolfazlshahi.cloud"
+"s3.o5s.shop"
+"s4.o5s.shop"
+"s5.o5s.shop"
+"v.whitedns.shop"
+"v9.whitedns.shop"
+"v10.whitedns.shop"
+"v11.whitedns.shop"
+"v12.whitedns.shop"
+"v13.whitedns.shop"
+"v14.whitedns.shop"
+"v15.whitedns.shop"
+"v16.whitedns.shop"
+"v17.whitedns.shop"
+"v18.whitedns.shop"
 )
 
 SERVER_KEYS=(
@@ -4021,6 +4036,21 @@ SERVER_KEYS=(
 "3daba91415d337606a91e289ca61d6d6"
 "TelegramChannel@link_dakheli_app"
 "TelegramChannel@link_dakheli_app"
+"a4c5649c628ac1103ad55c5208e0d74d"
+"TelegramChannel@link_dakheli_app"
+"TelegramChannel@link_dakheli_app"
+"TelegramChannel@link_dakheli_app"
+"b07dc357360d6e6896509136d7097897"
+"a2f3348bfa02170639970f2d63f103dc"
+"1ecd5fdfe351a9313cea39fe1b9c59dd"
+"4c1669326cdbe898cab0965ace3010c0"
+"009c514b2a643ed40cbd7cc619389b0f"
+"e2918870ce88f05547fbfba99aee4ec5"
+"9b8672a352d040489d96be9df97ed966"
+"9aa68e7e9a7c22d91d8f466d64a35dff"
+"592845ca38f19461383d05733c33214c"
+"576550354a7309530b7fa25152dc672f"
+"d0538a3d545a7830b8bb2eb0c3748e95"
 )
 
 # -------------------------
